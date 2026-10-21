@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sumit Kumar, Application Architect</title>
+<meta name="description" content="Sumit Kumar: application architect for SaaS and fintech platforms. 14+ years building payment, banking and compliance systems.">
+<meta property="og:title" content="Sumit Kumar, Application Architect">
+<meta property="og:description" content="Solution architecture for SaaS and fintech platforms. Ex-Spenmo (YC S20), Open Financial, BlackLine. Founder, SutraOS.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sumit22.github.io/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500&family=Schibsted+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EDF0EA;
+    --paper-2: #E3E8DF;
+    --ink: #18262A;
+    --muted: #56645F;
+    --rule: #C3CBC1;
+    --cobalt: #2343C9;
+    --cobalt-soft: #D6DDF5;
+    --sans: "Schibsted Grotesk", system-ui, sans-serif;
+    --serif: "Literata", Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #142024;
+      --paper-2: #1B2A2F;
+      --ink: #E4EAE3;
+      --muted: #9BAAA4;
+      --rule: #33454A;
+      --cobalt: #8EA2FF;
+      --cobalt-soft: #26335F;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  a { color: var(--cobalt); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  @media (max-width: 600px) { .wrap { padding: 0 16px; } }
+
+  /* Header */
+  .top {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 28px 0 0; font-family: var(--sans); font-size: 0.95rem;
+  }
+  .top .name { font-weight: 700; letter-spacing: -0.01em; }
+  .top nav a { color: var(--ink); text-decoration: none; margin-left: 22px; }
+  .top nav a:hover { color: var(--cobalt); }
+  @media (max-width: 600px) { .top nav { display: none; } }
+
+  /* Hero */
+  .hero {
+    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 48px; align-items: center; padding: 64px 0 72px;
+  }
+  @media (max-width: 880px) { .hero { grid-template-columns: 1fr; gap: 32px; padding: 40px 0 48px; } }
+  .hero h1 {
+    font-family: var(--sans); font-weight: 700;
+    font-size: clamp(2.1rem, 4.4vw, 3.3rem); line-height: 1.06;
+    letter-spacing: -0.025em; margin: 0 0 22px;
+  }
+  .hero p { margin: 0 0 14px; max-width: 34em; color: var(--muted); }
+  .hero p.lede { color: var(--ink); font-size: 1.15rem; }
+  .hero .links { margin-top: 26px; font-family: var(--sans); font-weight: 600; font-size: 0.98rem; }
+  .hero .links a { margin-right: 22px; display: inline-block; margin-bottom: 8px; }
+
+  figure.diagram { margin: 0; }
+  figure.diagram svg { width: 100%; height: auto; display: block; }
+  figure.diagram figcaption {
+    font-family: var(--sans); font-size: 0.85rem; color: var(--muted);
+    margin-top: 12px; max-width: 46em;
+  }
+  .d-box { fill: var(--paper); stroke: var(--cobalt); stroke-width: 1.5; }
+  .d-box.solid { fill: var(--cobalt); }
+  .d-box.soft { fill: var(--cobalt-soft); stroke: var(--cobalt); }
+  .d-line { stroke: var(--cobalt); stroke-width: 1.5; fill: none; }
+  .d-dash { stroke-dasharray: 4 4; }
+  .d-t { font-family: var(--sans); font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .d-t.inv { fill: var(--paper); }
+  .d-s { font-family: var(--sans); font-size: 11px; fill: var(--muted); }
+  .d-s.inv { fill: var(--paper); opacity: 0.85; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .draw .d-line { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 1.1s ease-out forwards; }
+    .draw .d-line.d-dash { stroke-dasharray: 4 4; stroke-dashoffset: 0; animation: none; opacity: 0; animation: fade .5s 1s forwards; }
+    .draw .layer { opacity: 0; animation: fade .45s ease-out forwards; }
+    .draw .l1 { animation-delay: .05s; } .draw .l2 { animation-delay: .3s; }
+    .draw .l3 { animation-delay: .55s; } .draw .l4 { animation-delay: .8s; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes fade { to { opacity: 1; } }
+  }
+
+  /* Sections */
+  section { border-top: 1px solid var(--rule); padding: 56px 0; }
+  section h2 {
+    font-family: var(--sans); font-weight: 700; font-size: 1.6rem;
+    letter-spacing: -0.015em; margin: 0 0 8px;
+  }
+  section .intro { color: var(--muted); max-width: 38em; margin: 0 0 32px; }
+
+  /* Career: a real sequence, so a year gutter */
+  .career { list-style: none; padding: 0; margin: 0; }
+  .career li {
+    display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 24px;
+    padding: 22px 0; border-bottom: 1px solid var(--rule);
+  }
+  .career li:last-child { border-bottom: 0; }
+  .career .when { font-family: var(--sans); font-size: 0.92rem; color: var(--muted); padding-top: 3px; }
+  .career h3 { font-family: var(--sans); font-size: 1.12rem; font-weight: 600; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .career h3 span { font-weight: 500; color: var(--muted); }
+  .career p { margin: 0; max-width: 40em; }
+  .career .result { font-family: var(--sans); font-weight: 700; color: var(--cobalt); }
+  @media (max-width: 600px) {
+    .career li { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* Projects as rows */
+  .projects { margin: 0; }
+  .project {
+    display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: 32px;
+    padding: 26px 0; border-bottom: 1px solid var(--rule);
+  }
+  .project:last-child { border-bottom: 0; }
+  .project h3 { font-family: var(--sans); font-size: 1.3rem; font-weight: 700; margin: 0 0 8px; letter-spacing: -0.015em; }
+  .project h3 a { color: var(--ink); text-decoration: none; }
+  .project h3 a:hover { color: var(--cobalt); text-decoration: underline; }
+  .project p { margin: 0; max-width: 40em; }
+  .project .stack { font-family: var(--sans); font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+  .project .stack a { display: inline-block; margin-top: 10px; font-weight: 600; }
+  @media (max-width: 720px) { .project { grid-template-columns: 1fr; gap: 10px; } }
+
+  .writeup {
+    background: var(--paper-2); border-left: 3px solid var(--cobalt);
+    padding: 26px 28px; max-width: 46em;
+  }
+  .writeup h3 { font-family: var(--sans); font-size: 1.25rem; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .writeup p { margin: 0 0 12px; }
+  .writeup p:last-child { margin: 0; font-family: var(--sans); font-weight: 600; }
+
+  .stackgrid { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 10px 24px; max-width: 52em; }
+  .stackgrid dt { font-family: var(--sans); font-weight: 600; }
+  .stackgrid dd { margin: 0; color: var(--ink); }
+  @media (max-width: 600px) { .stackgrid { grid-template-columns: 1fr; gap: 2px; } .stackgrid dd { margin-bottom: 12px; } }
+
+  .contact p { max-width: 38em; }
+  .contact .links { font-family: var(--sans); font-weight: 600; margin-top: 18px; }
+  .contact .links a { margin-right: 22px; display: inline-block; margin-bottom: 8px; }
+  footer { border-top: 1px solid var(--rule); padding: 24px 0 40px; font-family: var(--sans); font-size: 0.85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span class="name">Sumit Kumar</span>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#projects">Open source</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <h1>I design systems that move money and keep an exact record of it.</h1>
+        <p class="lede">Application architect for SaaS and fintech platforms. 14+ years in software engineering, 9 of them in architect and lead roles across banking, payments, cards and crypto.</p>
+        <p>I take systems from requirements to production: working with business and client stakeholders, choosing the architecture and stack, designing components and AWS infrastructure, and writing the specs teams build from. Based in Bengaluru.</p>
+        <div class="links">
+          <a href="https://www.linkedin.com/in/sumit22">LinkedIn</a>
+          <a href="https://github.com/sumit22">GitHub</a>
+          <a href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <figure class="diagram">
+        <svg class="draw" viewBox="0 0 560 420" role="img" aria-labelledby="dtitle ddesc">
+          <title id="dtitle">SutraOS platform architecture</title>
+          <desc id="ddesc">Requests pass a tenant check at the API gateway and again in the application layer. Seventeen domain modules sit below, communicating only through a queued event bus or published interfaces, with PostgreSQL and Redis underneath.</desc>
+
+          <!-- connectors -->
+          <path class="d-line" d="M280 62 V88" />
+          <path class="d-line" d="M280 136 V160" />
+          <path class="d-line" d="M70 160 H490" />
+          <path class="d-line" d="M70 160 V178 M175 160 V178 M280 160 V178 M385 160 V178 M490 160 V178" />
+          <path class="d-line" d="M70 238 V290 M175 238 V290 M280 238 V290 M385 238 V290 M490 238 V290" />
+          <path class="d-line" d="M175 320 V352 M385 320 V352" />
+          <path class="d-line d-dash" d="M122 208 H128 M227 208 H233 M332 208 H338 M437 208 H443" />
+
+          <!-- layer 1: gateway -->
+          <g class="layer l1">
+            <rect class="d-box solid" x="170" y="18" width="220" height="44" rx="4"/>
+            <text class="d-t inv" x="280" y="38" text-anchor="middle">API gateway</text>
+            <text class="d-s inv" x="280" y="53" text-anchor="middle">tenant check 1, by subdomain</text>
+          </g>
+
+          <!-- layer 2: app layer -->
+          <g class="layer l2">
+            <rect class="d-box" x="150" y="88" width="260" height="48" rx="4"/>
+            <text class="d-t" x="280" y="109" text-anchor="middle">Application layer</text>
+            <text class="d-s" x="280" y="125" text-anchor="middle">tenant check 2, rules tested in CI</text>
+          </g>
+
+          <!-- layer 3: modules -->
+          <g class="layer l3">
+            <rect class="d-box" x="22" y="178" width="96" height="60" rx="4"/>
+            <text class="d-t" x="70" y="204" text-anchor="middle">Contracts</text>
+            <text class="d-s" x="70" y="221" text-anchor="middle">e-sign</text>
+
+            <rect class="d-box" x="127" y="178" width="96" height="60" rx="4"/>
+            <text class="d-t" x="175" y="204" text-anchor="middle">Payments</text>
+            <text class="d-s" x="175" y="221" text-anchor="middle">escrow, payouts</text>
+
+            <rect class="d-box" x="232" y="178" width="96" height="60" rx="4"/>
+            <text class="d-t" x="280" y="204" text-anchor="middle">Tax</text>
+            <text class="d-s" x="280" y="221" text-anchor="middle">TDS / GST</text>
+
+            <rect class="d-box" x="337" y="178" width="96" height="60" rx="4"/>
+            <text class="d-t" x="385" y="204" text-anchor="middle">KYC</text>
+            <text class="d-s" x="385" y="221" text-anchor="middle">identity, KYB</text>
+
+            <rect class="d-box soft" x="442" y="178" width="96" height="60" rx="4"/>
+            <text class="d-t" x="490" y="204" text-anchor="middle">+12 more</text>
+            <text class="d-s" x="490" y="221" text-anchor="middle">17 in total</text>
+          </g>
+
+          <!-- layer 4: event bus + data -->
+          <g class="layer l4">
+            <rect class="d-box soft" x="22" y="290" width="516" height="30" rx="4"/>
+            <text class="d-t" x="280" y="310" text-anchor="middle">Queued events or published interfaces only</text>
+
+            <rect class="d-box" x="110" y="352" width="130" height="44" rx="4"/>
+            <text class="d-t" x="175" y="372" text-anchor="middle">PostgreSQL</text>
+            <text class="d-s" x="175" y="387" text-anchor="middle">encrypted vault</text>
+
+            <rect class="d-box" x="320" y="352" width="130" height="44" rx="4"/>
+            <text class="d-t" x="385" y="372" text-anchor="middle">Redis</text>
+            <text class="d-s" x="385" y="387" text-anchor="middle">queues, cache</text>
+          </g>
+        </svg>
+        <figcaption>SutraOS, the platform I'm building now. Tenant isolation is checked twice, so one bug can't expose another tenant's data. Modules never call each other directly, so any one can become its own service without a rewrite.</figcaption>
+      </figure>
+    </div>
+
+    <section id="work">
+      <h2>Work</h2>
+      <p class="intro">Mostly fintech: a crypto exchange, a corporate-cards startup, a neobank and enterprise finance automation.</p>
+      <ol class="career" reversed>
+        <li>
+          <div class="when">2025 – now</div>
+          <div>
+            <h3>Founder &amp; Principal Engineer <span>at SutraOS</span></h3>
+            <p>Sole architect and engineer for live SaaS and AI products, owning design, delivery, operations and AWS cost. Also built SalonOS, a white-label booking platform with PCI DSS SAQ-A payments, and Autopilot Videos, an AI pipeline that turns headlines into narrated YouTube Shorts. NVIDIA Inception member.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">2024 – 2025</div>
+          <div>
+            <h3>Senior Software Engineer <span>at BlackLine</span></h3>
+            <p>Owned core components of a high-volume financial data pipeline handling invoices, account data and statements. Moved stage-to-stage processing onto AWS SQS so each stage scales and fails independently.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">2023 – 2024</div>
+          <div>
+            <h3>Lead Software Engineer <span>at Open Financial Technologies</span></h3>
+            <p>Cut critical production API response times <span class="result">20–50x</span> across hundreds of thousands of requests a day by refactoring controllers that carried 20–30 dependencies, verified with APM p95/p99 data. Built a NestJS identity service used across internal platforms. Led 5 engineers and delivered HDFC Bank's business banking admin platform.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">2020 – 2022</div>
+          <div>
+            <h3>Lead Architect <span>at Spenmo (YC S20)</span></h3>
+            <p>Architected a multi-currency, multi-country PayIn and Payout system. Led the Cards team through self-serve virtual and physical card lifecycle management, and owned the MatchMove and Rapyd integrations, including reconciliation.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">2017 – 2020</div>
+          <div>
+            <h3>Web Architect <span>at Unocoin</span></h3>
+            <p>Modernised a crypto exchange from legacy PHP to Laravel, then re-architected it for multi-country currencies, languages and KYC rules. Designed AWS infrastructure that absorbed traffic spikes during market volatility. Led a team of 7.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when">2010 – 2017</div>
+          <div>
+            <h3>Earlier roles <span>at HolidayIQ, HeadHonchos and others</span></h3>
+            <p>Solr search and review-fraud detection for thousands of hotels, and a LinkedIn application parser that drove over 30% of monthly sign-ups.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="projects">
+      <h2>Open source</h2>
+      <p class="intro">Things I've built in public, each solving a problem I hit in production.</p>
+      <div class="projects">
+        <article class="project">
+          <div>
+            <h3><a href="https://github.com/sumit22/sendrail">sendrail</a></h3>
+            <p>Email deliverability on your own AWS SES account: sending, delivery feedback, suppression and reputation. It's the layer you'd otherwise rent from an email service provider, so the domain reputation stays yours.</p>
+          </div>
+          <div class="stack">TypeScript, AWS SES, Express and NestJS adapters<br><a href="https://github.com/sumit22/sendrail">View repository</a></div>
+        </article>
+        <article class="project">
+          <div>
+            <h3><a href="https://github.com/sumit22/FindMyStar">FindMyStar</a></h3>
+            <p>An offline mobile app that points you at any of ~620 stars, planets and deep-sky objects with an AR arrow. Positions are computed in Rust against VSOP87 and Hipparcos data and validated against USNO and JPL Horizons. It makes no network calls.</p>
+          </div>
+          <div class="stack">Rust core over FFI, React Native, SQLite<br><a href="https://github.com/sumit22/FindMyStar">View repository</a></div>
+        </article>
+        <article class="project">
+          <div>
+            <h3><a href="https://github.com/sumit22/time-travel-carousel">time-travel-carousel</a></h3>
+            <p>A React carousel where every slide has a version history: left and right move between items, up and down move through their revisions. It loads files through your own authenticated client and has zero runtime dependencies.</p>
+          </div>
+          <div class="stack">TypeScript, React<br><a href="https://github.com/sumit22/time-travel-carousel">View repository</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="writing">
+      <h2 id="writing">Writing</h2>
+      <p class="intro">How I approach slow or fragile systems.</p>
+      <div class="writeup">
+        <h3>32 minutes to 2 minutes: rewriting a Symfony integration suite in one PR</h3>
+        <p>A 684-test suite that took about 32 minutes became 881 tests running in 2 minutes 10 seconds. Removing the coupling to the application seeder was the main fix, and three production bugs surfaced along the way. The write-up includes the false starts.</p>
+        <p><a href="https://gist.github.com/sumit22/950bee565eb6a9ea76a6e3212c476b26">Read the write-up</a></p>
+      </div>
+    </section>
+
+    <section id="stack">
+      <h2>Stack</h2>
+      <p class="intro">Polyglot, with most of my production years in PHP and TypeScript.</p>
+      <dl class="stackgrid">
+        <dt>Languages</dt><dd>PHP, TypeScript, JavaScript, Go, Rust, Java</dd>
+        <dt>Frameworks</dt><dd>Laravel, Symfony, NestJS, Express, Next.js, React, React Native</dd>
+        <dt>Data</dt><dd>PostgreSQL, MySQL, Redis, MongoDB, Apache Solr</dd>
+        <dt>Cloud</dt><dd>AWS (EC2, S3, SQS, SNS, SES, IAM, VPC, Auto Scaling), Docker, GitHub Actions, Jenkins</dd>
+        <dt>Practice</dt><dd>Domain-driven design, event-driven architecture, multi-tenant SaaS, legacy modernisation</dd>
+        <dt>Compliance</dt><dd>PCI DSS (SAQ-A), GDPR, RBI and banking requirements</dd>
+      </dl>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>I'm open to Application Architect, Solution Architect and Lead Engineer roles in fintech or SaaS, and to architecture reviews and technical due diligence.</p>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/sumit22">Message me on LinkedIn</a>
+        <a href="https://github.com/sumit22">Follow on GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>Sumit Kumar, Bengaluru. Source on <a href="https://github.com/sumit22/sumit22.github.io">GitHub</a>.</footer>
+</div>
+</body>
+</html>
